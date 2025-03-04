@@ -2,6 +2,7 @@ class:: Shaper
 summary:: Wave shaper.
 related:: Classes/Index, Classes/WrapIndex, Classes/Wavetable
 categories::  UGens>Buffer
+keyword:: waveshaping, waveshaper
 
 Description::
 Performs waveshaping on the input signal by indexing into the table.
