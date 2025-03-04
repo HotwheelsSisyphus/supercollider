@@ -72,7 +72,7 @@ section:: Layout management
 
 The following table contains classes used in layout management.
 
-note:: This classes are only implemented in Qt GUI! ::
+note:: These classes are only implemented in Qt GUI! ::
 
 table::
 ## strong::Class::      || strong::Description::
