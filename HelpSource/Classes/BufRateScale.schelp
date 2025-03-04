@@ -5,7 +5,9 @@ categories::  UGens>Buffer>Info
 
 
 Description::
-Returns a ratio by which the playback of a soundfile is to be scaled.
+Returns the ratio of a buffer's sample rate to the server's sample rate; 
+used to scale playback if the two rates are different. E.g., if buffer
+is set at 48000 Hz and server runs at 44100 Hz, returns 480/441. 
 
 classmethods::
 
