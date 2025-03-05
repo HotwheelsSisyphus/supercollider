@@ -8,15 +8,16 @@ Description::
 
 A Schroeder allpass filter is given by the difference equations
 
-code::
-s(t) = x(t) + k * s(t - D)
-y(t) = -k * s(t) + s(t - D)
+math::
+\\begin{align*} s[n] &= &x[n]&+&ks[n - D]\\\\
+y[n] &=&-ks[n]&+&s[n - D]
+\\end{align*}
 ::
 
-where code::x(t):: is the input signal, code::y(t):: is the output signal,
-code::D:: is the delay time, and code::k:: is the allpass coefficient.
+where math::x[n]:: is the input signal, math::y[n]:: is the output signal,
+math::D:: is the delay time in samples, and math::k:: is the allpass coefficient.
 
-In this UGen, code::k:: is computed as
+In this UGen, math::k:: is computed as
 code::k == 0.001 ** (delay / decay.abs) * decay.sign:: (0.001 is -60 dBFS).
 
 This UGen quantizes the delay time to the nearest sample period, and will

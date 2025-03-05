@@ -9,8 +9,8 @@ Description::
 A standard first order filter section. Filter coefficients are given
 directly rather than calculated for you. Formula is equivalent to:
 
-code::
-out(i) = (a0 * in(i)) + (a1 * in(i-1)) + (b1 * out(i-1))
+math::
+y[n] = a_0x[n] + a_1x[n-1] + b_1y[n-1]
 ::
 
 

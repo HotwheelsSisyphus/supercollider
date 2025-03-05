@@ -6,14 +6,30 @@ categories::  UGens>Filters>Linear
 
 Description::
 
-A standard second order filter section. Filter coefficients are given
-directly rather than calculated for you. Formula is equivalent to:
+A standard second order filter section (biquadratic in direct form I).
+Filter coefficients have to be given directly.
+footnote::See Robert Bristow-Johnson's
+link::https://www.w3.org/TR/audio-eq-cookbook/#Audio EQ Cookbook:: for a number of common filter designs.::    
+The formula is equivalent to the following:
 
-code::
-
-out(i) = (a0 * in(i)) + (a1 * in(i-1)) + (a2 * in(i-2)) + (b1 * out(i-1)) + (b2 * out(i-2))
-
+math::
+y[n] = a_0x[n] + a_1x[n-1] + a_2x[n-2] + b_1y[n-1] + b_2y[n-2]
 ::
+
+note::strong::Reminder::: When calculating filter coefficients for this class,
+pay attention to possible differences in notational conventions between sources.   
+
+There are multiple ways to write this difference equation, depending on whether
+feedforward and feedback coeeficients are represented by math::a:: and math::b:: or
+math::b:: and math::a:: respectively; whether the feedback terms are subtracted in the difference
+equation (resulting in addition in the denominator of the transfer function and
+vice versa); and if/how the coefficients are normalized (whether a math::b_0:: is explicitly given or not).
+
+The version used here writes math::a:: for the feedforward, math::b:: for the feedback coefficients,
+addition operators in the difference equation, and normalizes such that
+math::b_0 = 1:: (hence math::b_0:: does not appear in the equation).
+::
+
 
 
 classmethods::
