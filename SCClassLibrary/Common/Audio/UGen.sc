@@ -51,6 +51,16 @@ UGen : AbstractFunction {
 	madd { arg mul = 1.0, add = 0.0;
 		^MulAdd(this, mul, add);
 	}
+
+	divide { | divisor |
+		^BinaryOpUGen('div', this, divisor);
+	}
+
+	div { | divisor |
+		^floor(this/divisor)
+	}
+
+
 	range { arg lo = 0.0, hi = 1.0;
 		var mul, add;
 		if (this.signalRange == \bipolar, {
