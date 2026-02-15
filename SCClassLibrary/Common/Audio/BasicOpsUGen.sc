@@ -56,6 +56,17 @@ UnaryOpUGen : BasicOpUGen {
 	}
 }
 
+Truncate : UGen {
+	*ar { arg in;
+		^this.multiNew('audio', in)
+	}
+	//init { arg in;  
+	//	this.operator = \truncate;
+	//	rate = in.rate;
+	//	inputs = in.asArray
+	//}
+}
+
 BinaryOpUGen : BasicOpUGen {
 	*new { arg selector, a, b;
 		^this.multiNew('audio', selector, a, b)

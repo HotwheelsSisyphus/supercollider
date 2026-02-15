@@ -14,6 +14,8 @@ SimpleNumber : Number {
 	abs { _Abs; ^this.primitiveFailed }
 	ceil { _Ceil; ^this.primitiveFailed }
 	floor { _Floor; ^this.primitiveFailed }
+	//truncate { _Truncate; ^this.primitiveFailed }
+	//truncateBoost { _TruncateBoost; ^this.primitiveFailed }
 	frac { _Frac; ^this.primitiveFailed }
 	sign { _Sign; ^this.primitiveFailed }
 	squared { _Squared; ^this.primitiveFailed }

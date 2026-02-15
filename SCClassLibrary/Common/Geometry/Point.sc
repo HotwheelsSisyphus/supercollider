@@ -85,6 +85,8 @@ Point {
 		^Point(x.trunc(quant.x), y.trunc(quant.y))
 	}
 
+	truncate { ^Point(x.truncate, y.truncate) }
+
 	mod { |that|
 		var thatPoint;
 		thatPoint = that.asPoint;

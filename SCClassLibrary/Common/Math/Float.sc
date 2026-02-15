@@ -8,6 +8,7 @@ Float : SimpleNumber {
 	
 	modSeaside { arg aNumber, adverb; _Mod; ^aNumber.performBinaryOpOnSimpleNumber('mod', this, adverb) }
 
+	truncate { _Truncate; ^this.primitiveFailed }
 	clip { arg lo, hi; _ClipFloat; ^this.primitiveFailed }
 	wrap { arg lo, hi; _WrapFloat; ^this.primitiveFailed }
 	fold { arg lo, hi; _FoldFloat; ^this.primitiveFailed }

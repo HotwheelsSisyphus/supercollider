@@ -82,6 +82,10 @@ UGen : AbstractFunction {
 		^this.range(0, mul)
 	}
 
+	truncate { 
+		^Truncate.ar(this)
+	}
+
 	bipolar { arg mul = 1;
 		^this.range(mul.neg, mul)
 	}
