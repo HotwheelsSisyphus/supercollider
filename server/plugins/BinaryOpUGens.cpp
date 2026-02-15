@@ -701,7 +701,7 @@ void idiv_d(BinaryOpUGen* unit, int inNumSamples) {
     if (inNumSamples) {
         float a = DEMANDINPUT_A(0, inNumSamples);
         float b = DEMANDINPUT_A(1, inNumSamples);
-        OUT0(0) = sc_isnan(a) || sc_isnan(b) ? NAN : floor(a / b);
+        OUT0(0) = sc_isnan(a) || sc_isnan(b) ? NAN : trunc(a / b);
     } else {
         RESETINPUT(0);
         RESETINPUT(1);
@@ -1181,7 +1181,7 @@ void mul_1(BinaryOpUGen* unit, int inNumSamples) { ZOUT0(0) = ZIN0(0) * ZIN0(1);
 
 void div_1(BinaryOpUGen* unit, int inNumSamples) { ZOUT0(0) = ZIN0(0) / ZIN0(1); }
 
-void idiv_1(BinaryOpUGen* unit, int inNumSamples) { ZOUT0(0) = floor(ZIN0(0) / ZIN0(1)); }
+void idiv_1(BinaryOpUGen* unit, int inNumSamples) { ZOUT0(0) = trunc(ZIN0(0) / ZIN0(1)); }
 
 void mod_1(BinaryOpUGen* unit, int inNumSamples) {
     float xa = ZIN0(0);
@@ -2018,7 +2018,7 @@ void idiv_aa(BinaryOpUGen* unit, int inNumSamples) {
     float* a = ZIN(0);
     float* b = ZIN(1);
 
-    LOOP1(inNumSamples, ZXP(out) = floor(ZXP(a) / ZXP(b)););
+    LOOP1(inNumSamples, ZXP(out) = trunc(ZXP(a) / ZXP(b)););
 }
 
 void idiv_ak(BinaryOpUGen* unit, int inNumSamples) {
@@ -2031,7 +2031,7 @@ void idiv_ak(BinaryOpUGen* unit, int inNumSamples) {
         ZXP(out) = floor(ZXP(a) / xb);
     } else {
         float slope = CALCSLOPE(next_b, xb);
-        LOOP1(inNumSamples, ZXP(out) = floor(ZXP(a) / xb); xb += slope;);
+        LOOP1(inNumSamples, ZXP(out) = trunc(ZXP(a) / xb); xb += slope;);
         unit->mPrevB = xb;
     }
 }
@@ -2046,11 +2046,11 @@ void idiv_ka(BinaryOpUGen* unit, int inNumSamples) {
         if (xa == 0.f) {
             ZClear(inNumSamples, out);
         } else {
-            LOOP1(inNumSamples, ZXP(out) = floor(xa / ZXP(b)););
+            LOOP1(inNumSamples, ZXP(out) = trunc(xa / ZXP(b)););
         }
     } else {
         float slope = CALCSLOPE(next_a, xa);
-        LOOP1(inNumSamples, ZXP(out) = floor(xa / ZXP(b)); xa += slope;);
+        LOOP1(inNumSamples, ZXP(out) = trunc(xa / ZXP(b)); xa += slope;);
         unit->mPrevA = xa;
     }
 }
@@ -2060,7 +2060,7 @@ void idiv_ia(BinaryOpUGen* unit, int inNumSamples) {
     float xa = ZIN0(0);
     float* b = ZIN(1);
 
-    LOOP1(inNumSamples, ZXP(out) = floor(xa / ZXP(b)););
+    LOOP1(inNumSamples, ZXP(out) = trunc(xa / ZXP(b)););
 }
 
 
@@ -2069,7 +2069,7 @@ void idiv_ai(BinaryOpUGen* unit, int inNumSamples) {
     float* a = ZIN(0);
     float xb = ZIN0(1);
 
-    LOOP1(inNumSamples, ZXP(out) = floor(ZXP(a) / xb););
+    LOOP1(inNumSamples, ZXP(out) = trunc(ZXP(a) / xb););
 }
 
 
