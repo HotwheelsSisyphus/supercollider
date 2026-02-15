@@ -576,6 +576,22 @@ int prFrom64Bits(VMGlobals* g, int numArgsPushed) {
     return errNone;
 }
 
+int prTruncate(VMGlobals* g, int numArgsPushed) {
+    PyrSlot* a;
+    float x;
+    int p;
+
+    a = g->sp;
+    x = slotRawFloat(a);
+    p = trunc(x);
+    if (false) { // there should probably be some test for nan or inf or soemthing?
+        SetNil(a);
+    } else {
+        SetInt(a, p);
+    }
+    return errNone;
+}
+
 int mathClipInt(struct VMGlobals* g, int numArgsPushed) {
     PyrSlot *a, *b, *c;
     double lo, hi;
@@ -1368,6 +1384,10 @@ void initMathPrimitives() {
     definePrimitive(base, index++, "_SimpleNumberSeries", prSimpleNumberSeries, 3, 0);
     definePrimitive(base, index++, "_AsFraction", prAsFraction, 3, 0);
 
+    // standard trunc: homemade version
+    definePrimitive(base, index++, "_Truncate", prTruncate, 1, 0);
+    // "standard" trunc: Boost version
+    // definePrimitive(base, index++, "_TruncateBoost", prBoostOneArg<int, double, boost::math::itrunc<double>>, 1, 0);
     //  Number Series:
     definePrimitive(base, index++, "_BernouliB2n", prBoostOneArg<double, int, boost::math::bernoulli_b2n<double>>, 1,
                     0);
