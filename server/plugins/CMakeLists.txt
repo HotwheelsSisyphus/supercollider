@@ -136,6 +136,11 @@ add_library(ML_UGens MODULE
 	${scplugin_common_sources}
 )
 
+add_library(Truncate MODULE
+	Truncate.cpp
+)
+list(APPEND plugins Truncate)
+
 if(SC_ABLETON_LINK)
 	add_library(Link_UGen MODULE
 		LinkUGen.cpp
